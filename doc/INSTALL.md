@@ -87,8 +87,9 @@ $ conan create . <username>/<channel> -b=outdated <your_profile_and_settings>
 
 ## Above + Building unit tests and examples + Running unit tests
 
-To create a Conan package, verify the compilation of all the executable files, and run
-unit tests the following step may be done:
+The following command will create a Conan package, verify the compilation of all the executable
+files, and run the unit tests. Moreover, it will perform aforementioned compilation with a really
+restrictive compilation warnings flags set.
 
 ```bash
 $ conan create . <username>/<channel> -b=outdated <your_profile_and_settings> -e CONAN_RUN_TESTS=True
