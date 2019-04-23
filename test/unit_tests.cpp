@@ -25,4 +25,5 @@
 
 TEST(Template, Test)
 {
+    EXPECT_TRUE(mp::private_func());
 }

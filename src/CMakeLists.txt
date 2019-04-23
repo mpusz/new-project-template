@@ -36,7 +36,7 @@ include(tools)
 
 # library definition
 add_library(new_project
-    include/mp/public.h
+    public.cpp include/mp/public.h
     private.cpp private.h
 )
 target_compile_features(new_project PUBLIC cxx_std_17)
@@ -61,4 +61,4 @@ install(DIRECTORY include/mp
 )
 
 # generate configuration files and install the package
-configure_and_install(../cmake/common/cmake/simple_package-config.cmake.in SameMajorVersion)
+configure_and_install(../cmake/common/cmake/simple_package-config.cmake.in mp SameMajorVersion)

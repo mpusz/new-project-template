@@ -20,12 +20,20 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#pragma once
+#include <mp/public.h>
+#include <iostream>
 
-namespace mp {
 
-    // put here ONLY the PUBLIC interface of the library
-
-    bool public_func();
-
+int main()
+{
+  try {
+    if(!mp::public_func())
+      std::cout << "That is really unexpected ;-)\n";
+  }
+  catch (const std::exception& ex) {
+    std::cerr << "Unhandled std exception caught: " << ex.what() << '\n';
+  }
+  catch (...) {
+    std::cerr << "Unhandled unknown exception caught\n";
+  }
 }

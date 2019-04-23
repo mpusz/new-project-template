@@ -20,21 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.8)
-project(new_project_test)
 
-# set path to custom cmake modules
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../cmake/common/cmake")
-
-# include common tools and workarounds
-include(tools)
-
-# add dependencies
-enable_testing()
-find_package(GTest MODULE REQUIRED)
-if(NOT TARGET mp::new_project)
-    find_package(new_project CONFIG REQUIRED)
-endif()
+find_package(GTest CONFIG REQUIRED)
 
 # unit tests
 add_executable(unit_tests
@@ -43,7 +30,7 @@ add_executable(unit_tests
 target_link_libraries(unit_tests
     PRIVATE
         mp::new_project
-        GTest::Main
+        GTest::gtest_main
 )
 add_test(NAME new_project.unit_tests
     COMMAND

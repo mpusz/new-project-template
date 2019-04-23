@@ -29,8 +29,13 @@
 *.app
 
 # IDE-specific
-.*/
-cmake-build-*/
+.idea/
+.vscode/
+
+# build artifacts
+/cmake-build-*/
+/build/
+/test_package/build/
 
 # Conan
 *.pyc

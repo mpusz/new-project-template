@@ -20,12 +20,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#pragma once
+#include "include/mp/public.h"
+#include "private.h"
 
-namespace mp {
 
-    // put here ONLY the PUBLIC interface of the library
-
-    bool public_func();
-
+bool mp::public_func()
+{
+    return private_func();
 }

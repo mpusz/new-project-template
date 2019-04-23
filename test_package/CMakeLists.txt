@@ -20,9 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-# example app
-add_executable(example example.cpp)
-target_link_libraries(example
-    PRIVATE
-        mp::new_project
-)
+cmake_minimum_required(VERSION 2.8.12)
+project(test_package)
+
+set(CMAKE_VERBOSE_MAKEFILE TRUE)
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
+# test conan-generated target
+add_executable(${PROJECT_NAME}_conan test_package.cpp)
+target_compile_features(${PROJECT_NAME}_conan PRIVATE cxx_std_20)  # Conan is not able to propagate that yet :-(
+target_link_libraries(${PROJECT_NAME}_conan PRIVATE CONAN_PKG::new_project)
+
+# test cmake-generated target
+find_package(new_project CONFIG REQUIRED)
+add_executable(${PROJECT_NAME}_cmake test_package.cpp)
+target_link_libraries(${PROJECT_NAME}_cmake PRIVATE mp::new_project)

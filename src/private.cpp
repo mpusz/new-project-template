@@ -20,3 +20,12 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+#include "private.h"
+#include <iostream>
+
+
+bool mp::private_func()
+{
+    std::cout << "This is a new_project template\n";
+    return true;
+}

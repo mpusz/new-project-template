@@ -24,6 +24,8 @@
 
 namespace mp {
 
-// put here ONLY PRIVATE interface of the library
+    // put here ONLY the PRIVATE interface of the library
+    
+    bool private_func();
 
 }
