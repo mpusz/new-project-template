@@ -43,9 +43,9 @@ class NewProjectConan(ConanFile):
     }
     generators = "cmake"
 
-    def configure(self):
-        if self.settings.cppstd not in ["17", "gnu17", "20", "gnu20"]:
-            raise ConanInvalidConfiguration("Library requires at least C++17 support")
+    # def configure(self):
+    #     if self.settings.cppstd not in ["17", "gnu17", "20", "gnu20"]:
+    #         raise ConanInvalidConfiguration("Library requires at least C++17 support")
 
     def config_options(self):
         if self.settings.os == 'Windows':

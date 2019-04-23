@@ -39,7 +39,7 @@ add_library(new_project
     public.cpp include/mp/public.h
     private.cpp private.h
 )
-target_compile_features(new_project PUBLIC cxx_std_17)
+#target_compile_features(new_project PUBLIC cxx_std_17)
 target_include_directories(new_project
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

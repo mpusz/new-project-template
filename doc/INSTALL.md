@@ -57,7 +57,7 @@ To use this library as a Conan imported target the following steps may be done:
 
   ```bash
   $ cd build
-  $ conan install .. -pr <your_conan_profile> -s cppstd=17 -b=outdated
+  $ conan install .. -pr <your_conan_profile> -b=outdated
   ```
 
 
@@ -68,7 +68,7 @@ you should use `CMakeLists.txt` from the parent directory.
 
 ```bash
 mkdir build && cd build
-conan install .. <your_profile_and_settings> -s cppstd=17 -b outdated
+conan install .. <your_profile_and_settings> -b outdated
 cmake .. <your_cmake_configuration>
 cmake --build .
 ctest -VV
@@ -82,7 +82,7 @@ ctest -VV
 To create a Conan package the following step may be done:
 
 ```bash
-$ conan create . <username>/<channel> -s cppstd=17 -b=outdated <your_profile_and_settings>
+$ conan create . <username>/<channel> -b=outdated <your_profile_and_settings>
 ```
 
 ## Above + Building unit tests and examples + Running unit tests
@@ -91,7 +91,7 @@ To create a Conan package, verify the compilation of all the executable files, a
 unit tests the following step may be done:
 
 ```bash
-$ conan create . <username>/<channel> -s cppstd=17 -b=outdated <your_profile_and_settings> -e CONAN_RUN_TESTS=True
+$ conan create . <username>/<channel> -b=outdated <your_profile_and_settings> -e CONAN_RUN_TESTS=True
 ```
 
 
