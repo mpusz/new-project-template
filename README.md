@@ -1,5 +1,5 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?maxAge=3600)](https://raw.githubusercontent.com/mpusz/new-project-template/master/LICENSE)
-[![Travis CI](https://img.shields.io/travis/com/mpusz/new-project-template/master.svg?label=Travis%20CI)](https://travis-ci.org/mpusz/new-project-template)
+[![Travis CI](https://img.shields.io/travis/com/mpusz/new-project-template/master.svg?label=Travis%20CI)](https://travis-ci.com/mpusz/new-project-template)
 [![AppVeyor](https://img.shields.io/appveyor/ci/mpusz/new-project-template/master.svg?label=AppVeyor)](https://ci.appveyor.com/project/mpusz/new-project-template)
 
 # `new_project` template
