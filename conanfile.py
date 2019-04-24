@@ -1,6 +1,6 @@
 from conans import ConanFile, CMake, tools
 from conans.tools import load
-from conans.errors import ConanInvalidConfiguration
+# from conans.errors import ConanInvalidConfiguration
 import re
 
 
