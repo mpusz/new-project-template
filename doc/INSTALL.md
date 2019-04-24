@@ -3,12 +3,12 @@
 This library uses CMake to build a project and a Conan package manager to handle
 dependencies and packaging. Although, Conan usage is still optional here, please note
 that most probably CMake-only usage for more complicated projects will not be able to
-scale enough for your needs. Typical sources of issues here are:
+scale enough to your needs. Typical sources of issues here are:
 - not-CMake-based dependencies
 - header-only libraries depending on non-header-only libraries
 - problems with `find_package()` transitivity for projects with many levels of dependencies
-- problems with handling/building/testing several configuration at once (any setup of
-  Debug/Release, x68/x68_64, gcc/clang/VS, etc)
+- problems with handling/building/testing several configurations during project development
+  (any mix of Debug/Release, x68/x68_64, gcc/clang/VS, etc)
 
 
 ## CMake only
