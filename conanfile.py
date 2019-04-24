@@ -75,7 +75,6 @@ class NewProjectConan(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ['new_project']
-        self.cpp_info.includedirs = ['include']
 
     # uncomment for a header-only library
     # def package_id(self):
