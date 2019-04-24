@@ -53,6 +53,8 @@ class NewProjectConan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self)
+        if self.settings.compiler == "Visual Studio" and self.options.shared:
+            cmake.definitions["CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS"] = True
         if tools.get_env("CONAN_RUN_TESTS", False):
             cmake.configure()
         else:
