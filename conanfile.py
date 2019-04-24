@@ -23,9 +23,6 @@ class NewProjectConan(ConanFile):
     exports = ["LICENSE.md"]
     settings = "cppstd", "os", "compiler", "build_type", "arch"
     requires = ()
-    build_requires = (
-        "gtest/1.8.1@bincrafters/stable"
-    )
     options = {   # remove for a header-only library
         "shared": [True, False],
         "fPIC": [True, False]
@@ -50,6 +47,10 @@ class NewProjectConan(ConanFile):
     def config_options(self):
         if self.settings.os == 'Windows':
             del self.options.fPIC
+
+    def build_requirements(self):
+        if tools.get_env("CONAN_RUN_TESTS", False):
+            self.build_requires("gtest/1.8.1@bincrafters/stable")
 
     def _configure_cmake(self):
         cmake = CMake(self)
