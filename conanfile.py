@@ -66,7 +66,7 @@ class NewProjectConan(ConanFile):
         cmake = self._configure_cmake()
         cmake.build()
         if tools.get_env("CONAN_RUN_TESTS", False):
-            cmake.test(output_on_failure=True)
+            self.run("ctest -VV -C %s" % cmake.build_type, run_environment=True)
 
     def package(self):
         self.copy(pattern="*license*", dst="licenses", excludes="cmake/common/*", ignore_case=True, keep_path=False)
