@@ -21,7 +21,7 @@ class NewProjectConan(ConanFile):
     url = "https://github.com/mpusz/new_project_template"
     description = "A template to quickly start a new project"
     exports = ["LICENSE.md"]
-    settings = "cppstd", "os", "compiler", "build_type", "arch"
+    settings = "os", "compiler", "build_type", "arch"
     requires = ()
     options = {   # remove for a header-only library
         "shared": [True, False],
@@ -41,7 +41,7 @@ class NewProjectConan(ConanFile):
     generators = "cmake"
 
     # def configure(self):
-    #     if self.settings.cppstd not in ["17", "gnu17", "20", "gnu20"]:
+    #     if self.settings.compiler.cppstd not in ["17", "gnu17", "20", "gnu20"]:
     #         raise ConanInvalidConfiguration("Library requires at least C++17 support")
 
     def config_options(self):
