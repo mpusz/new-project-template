@@ -32,7 +32,6 @@ target_link_libraries(unit_tests
         mp::new_project
         GTest::gtest_main
 )
-add_test(NAME new_project.unit_tests
-    COMMAND
-        unit_tests
-)
+
+include(GoogleTest)
+gtest_discover_tests(unit_tests)
