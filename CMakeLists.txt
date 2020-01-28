@@ -26,14 +26,18 @@ project(new_project)
 # set path to custom cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/common/cmake")
 
-# include common tools and workarounds
-include(tools)
+# include CMake tools
+include(scripts)
 
 # use Conan configuration if available
 conan_init(cmake)
 
-# compilation options and flags used in a project development process
-include(compile_flags)
+# set restrictive compilation warnings
+set_warnings(TREAT_AS_ERRORS)
+
+# enable static analysis
+enable_clang_tidy()
+#enable_iwyu()
 
 # add project code
 add_subdirectory(src)

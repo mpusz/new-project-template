@@ -24,8 +24,8 @@
 
 namespace mp {
 
-    // put here ONLY the PUBLIC interface of the library
+// put here ONLY the PUBLIC interface of the library
 
-    bool public_func();
+bool public_func();
 
-}
+}  // namespace mp

@@ -13,7 +13,7 @@ A template to start up a new C++ project with the support for:
 
 ## Repository structure
 
-That repository contains the following independent `cmake`-based projects:
+This repository contains the following independent `cmake`-based projects:
  - `./src` - header-only project for `units`
  - `.` - project used for development needs that wraps `./src` project together with
    usage examples and unit tests

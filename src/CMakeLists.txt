@@ -28,8 +28,8 @@ project(new_project
 # set path to custom cmake modules
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake/common/cmake")
 
-# include common tools and workarounds
-include(tools)
+# include CMake tools
+include(scripts)
 
 # add dependencies
 # find_package(...)
@@ -49,16 +49,11 @@ target_include_directories(new_project
 add_library(mp::new_project ALIAS new_project)
 
 # installation info
-install(TARGETS new_project EXPORT ${CMAKE_PROJECT_NAME}Targets
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
-    INCLUDES DESTINATION include
-)
+install_targets(new_project)
 install(DIRECTORY include/mp
     DESTINATION include
     COMPONENT Devel
 )
 
 # generate configuration files and install the package
-configure_and_install(../cmake/common/cmake/simple_package-config.cmake.in mp SameMajorVersion)
+configure_and_install(${CMAKE_SCRIPTS_ROOT}/simple-config.cmake.in mp SameMajorVersion)

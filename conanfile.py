@@ -1,12 +1,32 @@
+# The MIT License (MIT)
+#
+# Copyright (c) 2016 Mateusz Pusz
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 from conans import ConanFile, CMake, tools
-from conans.tools import load
-# from conans.errors import ConanInvalidConfiguration
 import re
 
 
 def get_version():
     try:
-        content = load("src/CMakeLists.txt")
+        content = tools.load("src/CMakeLists.txt")
         version = re.search(r"project\([^\)]+VERSION (\d+\.\d+\.\d+)[^\)]*\)", content).group(1)
         return version.strip()
     except Exception:
@@ -14,11 +34,11 @@ def get_version():
 
 
 class NewProjectConan(ConanFile):
-    name = "new_project"
+    name = "new-project"
     version = get_version()
     author = "Mateusz Pusz"
-    license = "https://github.com/mpusz/new_project_template/blob/master/LICENSE"
-    url = "https://github.com/mpusz/new_project_template"
+    license = "https://github.com/mpusz/new-project-template/blob/master/LICENSE"
+    url = "https://github.com/mpusz/new-project-template"
     description = "A template to quickly start a new project"
     exports = ["LICENSE.md"]
     settings = "os", "compiler", "build_type", "arch"
@@ -40,38 +60,43 @@ class NewProjectConan(ConanFile):
     }
     generators = "cmake"
 
-    # def configure(self):
-    #     if self.settings.compiler.cppstd not in ["17", "gnu17", "20", "gnu20"]:
-    #         raise ConanInvalidConfiguration("Library requires at least C++17 support")
+    @property
+    def _run_tests(self):
+        return tools.get_env("CONAN_RUN_TESTS", False)
 
-    def config_options(self):
-        if self.settings.os == 'Windows':
-            del self.options.fPIC
-
-    def build_requirements(self):
-        if tools.get_env("CONAN_RUN_TESTS", False):
-            self.build_requires("gtest/1.8.1@bincrafters/stable")
-
-    def _configure_cmake(self):
+    def _configure_cmake(self, folder="src"):
         cmake = CMake(self)
         if self.settings.compiler == "Visual Studio" and self.options.shared:
             cmake.definitions["CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS"] = True
-        if tools.get_env("CONAN_RUN_TESTS", False):
+        if self._run_tests:
+            # developer's mode (unit tests, examples, restrictive compilation warnings, ...)
             cmake.configure()
         else:
-            cmake.configure(source_dir="%s/src" % self.source_folder)
+            # user's mode (library sources only)
+            cmake.configure(source_folder=folder, build_folder=folder)
         return cmake
+
+    def configure(self):
+        tools.check_min_cppstd(self, "17")
+
+    def config_options(self):
+        if self.settings.os == 'Windows':
+            del self.options.fPIC   # remove for a header-only library
+
+    def build_requirements(self):
+        if self._run_tests:
+            self.build_requires("gtest/1.10.0")
 
     def build(self):
         cmake = self._configure_cmake()
         cmake.build()
+        if self._run_tests:
+            self.run("ctest -VV -C %s" % cmake.build_type, run_environment=True)
 
     def package(self):
         self.copy(pattern="*license*", dst="licenses", excludes="cmake/common/*", ignore_case=True, keep_path=False)
         cmake = self._configure_cmake()
         cmake.install()
-        if tools.get_env("CONAN_RUN_TESTS", False):
-            self.run("ctest -VV -C %s" % cmake.build_type, run_environment=True)
 
     def package_info(self):
         self.cpp_info.libs = ['new_project']

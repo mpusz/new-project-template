@@ -1,0 +1,16 @@
+---
+Checks: '
+    *,
+    -llvm-header-guard,
+    -modernize-use-trailing-return-type,
+    -fuchsia-default-arguments-calls,
+    -fuchsia-statically-constructed-objects,
+    -*-special-member-functions,
+    -cppcoreguidelines-owning-memory,
+    -cert-err58-cpp
+'
+WarningsAsErrors: '*'
+HeaderFilterRegex: '.*'
+AnalyzeTemporaryDtors: false
+FormatStyle: file
+...
