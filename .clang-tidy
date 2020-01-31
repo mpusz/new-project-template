@@ -10,7 +10,7 @@ Checks: '
     -cert-err58-cpp
 '
 WarningsAsErrors: '*'
-HeaderFilterRegex: '.*'
+HeaderFilterRegex: '(^gtest)/.*'
 AnalyzeTemporaryDtors: false
 FormatStyle: file
 ...
