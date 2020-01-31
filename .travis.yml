@@ -37,9 +37,9 @@ matrix:
       - <<: *linux
         env: CONAN_CLANG_VERSIONS=7.0 CONAN_DOCKER_IMAGE=conanio/clang7
       - <<: *linux
-        env: CONAN_CLANG_VERSIONS=8.0 CONAN_DOCKER_IMAGE=conanio/clang8
+        env: CONAN_CLANG_VERSIONS=8 CONAN_DOCKER_IMAGE=conanio/clang8
       - <<: *linux
-        env: CONAN_CLANG_VERSIONS=8.0 CONAN_DOCKER_IMAGE=conanio/clang9
+        env: CONAN_CLANG_VERSIONS=9 CONAN_DOCKER_IMAGE=conanio/clang9
       - <<: *osx
         osx_image: xcode7.3
         env: CONAN_APPLE_CLANG_VERSIONS=7.3
