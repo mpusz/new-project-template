@@ -24,5 +24,5 @@
 add_executable(example example.cpp)
 target_link_libraries(example
     PRIVATE
-        mp::new_project
+        mp::new-project
 )

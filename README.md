@@ -2,7 +2,7 @@
 [![Travis CI](https://img.shields.io/travis/com/mpusz/new-project-template/master.svg?label=Travis%20CI)](https://travis-ci.com/mpusz/new-project-template)
 [![AppVeyor](https://img.shields.io/appveyor/ci/mpusz/new-project-template/master.svg?label=AppVeyor)](https://ci.appveyor.com/project/mpusz/new-project-template)
 
-# `new_project` template
+# `new-project` template
 
 A template to start up a new C++ project with the support for:
 - CMake
@@ -35,7 +35,7 @@ For a detailed information on project compilation, testing and reuse please refe
   - `CMakeLists.txt` files
   - directory of project interface header files and source files including those
   - `INSTALL.md`
-2. Replace `new_project` with new project name in all `CMakeLists.txt` files and quickly start
+2. Replace `new-project` with new project name in all `CMakeLists.txt` files and quickly start
    a development of something really exciting :-)
 3. Update `build.py` with proper packaging data
 
@@ -50,6 +50,6 @@ For a detailed information on project compilation, testing and reuse please refe
 
 ## Environment variables
 
-| Option          | Default | Values        | Travis CI | AppVeyor | Description                                                             |
-|-----------------|---------|---------------|-----------|----------|-------------------------------------------------------------------------|
-| CONAN_RUN_TESTS | False   | [True, False] | True      | True     | Compiles all the tests and examples and runs unit tests during CI build |
+| Option          | Default | Values        | Travis CI | AppVeyor | Description                                                                           |
+|-----------------|---------|---------------|-----------|----------|---------------------------------------------------------------------------------------|
+| CONAN_RUN_TESTS | False   | [True, False] | True      | True     | Enables compilation of all the tests and examples. Runs unit tests during Conan build |

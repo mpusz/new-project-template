@@ -30,7 +30,7 @@ add_executable(unit_tests
 )
 target_link_libraries(unit_tests
     PRIVATE
-        mp::new_project
+        mp::new-project
         CONAN_PKG::gtest
 )
 

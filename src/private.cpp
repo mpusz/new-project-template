@@ -26,6 +26,6 @@
 
 bool mp::private_func()
 {
-    std::cout << "This is a new_project template\n";
-    return true;
+  std::cout << "This is a new-project template\n";
+  return true;
 }
