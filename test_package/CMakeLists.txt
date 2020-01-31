@@ -23,16 +23,14 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(test_package)
 
-set(CMAKE_VERBOSE_MAKEFILE TRUE)
-
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
 
 # test conan-generated target
 add_executable(${PROJECT_NAME}_conan test_package.cpp)
-target_link_libraries(${PROJECT_NAME}_conan PRIVATE CONAN_PKG::new_project)
+target_link_libraries(${PROJECT_NAME}_conan PRIVATE CONAN_PKG::new-project)
 
 # test cmake-generated target
-find_package(new_project CONFIG REQUIRED)
+find_package(new-project CONFIG REQUIRED)
 add_executable(${PROJECT_NAME}_cmake test_package.cpp)
-target_link_libraries(${PROJECT_NAME}_cmake PRIVATE mp::new_project)
+target_link_libraries(${PROJECT_NAME}_cmake PRIVATE mp::new-project)

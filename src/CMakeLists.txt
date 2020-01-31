@@ -21,7 +21,7 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 3.8)
-project(new_project
+project(new-project
     VERSION 0.0.1
 )
 
@@ -35,21 +35,21 @@ include(scripts)
 # find_package(...)
 
 # library definition
-add_library(new_project
+add_library(new-project
     public.cpp include/mp/public.h
     private.cpp private.h
 )
-#target_compile_features(new_project PUBLIC cxx_std_17)
-target_include_directories(new_project
+#target_compile_features(new-project PUBLIC cxx_std_17)
+target_include_directories(new-project
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
         $<INSTALL_INTERFACE:include>
 )
-add_library(mp::new_project ALIAS new_project)
+add_library(mp::new-project ALIAS new-project)
 
 # installation info
-install_targets(new_project)
+install_targets(new-project)
 install(DIRECTORY include/mp
     DESTINATION include
     COMPONENT Devel
