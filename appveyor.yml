@@ -7,13 +7,15 @@ environment:
   matrix:
       - MINGW_CONFIGURATIONS: "4.9@x86_64@seh@posix, 5@x86_64@seh@posix"
       - MINGW_CONFIGURATIONS: "6@x86_64@seh@posix, 7@x86_64@seh@posix"
-      - MINGW_CONFIGURATIONS: "8@x86_64@seh@posix"
+      - MINGW_CONFIGURATIONS: "8@x86_64@seh@posix, 9@x86_64@seh@posix"
       - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
         CONAN_VISUAL_VERSIONS: 12
       - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
         CONAN_VISUAL_VERSIONS: 14
       - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
         CONAN_VISUAL_VERSIONS: 15
+      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+        CONAN_VISUAL_VERSIONS: 16
 
 install:
   - git submodule update --init --recursive
