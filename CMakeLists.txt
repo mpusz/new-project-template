@@ -32,12 +32,12 @@ include(scripts)
 # use Conan configuration if available
 conan_init(cmake)
 
-# set restrictive compilation warnings
-set_warnings(TREAT_AS_ERRORS)
-
 # enable static analysis
 enable_clang_tidy()
 #enable_iwyu()
+
+# set restrictive compilation warnings
+set_warnings(TREAT_AS_ERRORS)
 
 # add project code
 add_subdirectory(src)
