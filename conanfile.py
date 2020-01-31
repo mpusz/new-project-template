@@ -72,7 +72,7 @@ class NewProjectConan(ConanFile):
             # developer's mode (unit tests, examples, restrictive compilation warnings, ...)
             cmake.configure()
         else:
-            # user's mode (library sources only)
+            # consumer's mode (library sources only)
             cmake.configure(source_folder=folder, build_folder=folder)
         return cmake
 
