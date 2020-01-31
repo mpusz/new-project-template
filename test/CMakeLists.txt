@@ -22,7 +22,7 @@
 
 
 # check if conan installed a test framework
-conan_check_testing(GTest)
+conan_check_testing(gtest)
 
 # unit tests
 add_executable(unit_tests
@@ -31,7 +31,7 @@ add_executable(unit_tests
 target_link_libraries(unit_tests
     PRIVATE
         mp::new_project
-        CONAN_PKG::GTest
+        CONAN_PKG::gtest
 )
 
 include(GoogleTest)
