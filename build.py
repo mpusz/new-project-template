@@ -20,4 +20,6 @@ if __name__ == "__main__":
         upload = "https://api.bintray.com/conan/mpusz/conan-mpusz"
     )
     builder.add_common_builds(pure_c=False)
+    for settings, options, env_vars, build_requires, reference in builder.items:
+        settings["compiler.cppstd"] = "11"
     builder.run()

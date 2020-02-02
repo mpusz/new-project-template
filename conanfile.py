@@ -76,8 +76,8 @@ class NewProjectConan(ConanFile):
             cmake.configure(source_folder=folder, build_folder=folder)
         return cmake
 
-    # def configure(self):
-    #     tools.check_min_cppstd(self, "17")
+    def configure(self):
+        tools.check_min_cppstd(self, "11")
 
     def config_options(self):
         if self.settings.os == 'Windows':
