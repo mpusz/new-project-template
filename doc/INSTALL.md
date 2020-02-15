@@ -27,7 +27,7 @@ steps may be done:
 
 - link your CMake target with the library
 
-  ```text
+  ```cmake
   find_package(new-project CONFIG REQUIRED)
   target_link_libraries(${PROJECT_NAME} PRIVATE mp::new-project)
   ```
@@ -38,7 +38,7 @@ To use this library as a Conan imported target the following steps may be done:
 - add the library as a dependency to your Conan configuration file
   - `conanfile.txt`
   
-    ```text
+    ```ini
     [requires]
     new-project/0.0.1@mpusz/stable
     ```
@@ -49,9 +49,16 @@ To use this library as a Conan imported target the following steps may be done:
     requires = "new-project/0.0.1@mpusz/stable"
     ```
 
+- import Conan dependencies to a top level `CMakeLists.txt` file
+
+  ```cmake
+  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+  conan_basic_setup(TARGETS)
+  ```
+
 - link your CMake target with the library
 
-  ```text
+  ```cmake
   target_link_libraries(<your_target> PUBLIC|PRIVATE|INTERFACE CONAN_PKG::new-project)
   ```
 
@@ -104,5 +111,5 @@ conan create . <username>/<channel> -pr <your_conan_profile> -e CONAN_RUN_TESTS=
 To upload the package to a Conan server the following step may be done:
 
 ```shell
-$ conan upload -r <remote-name> --all new-project/0.0.1@<user>/<channel>
+conan upload -r <remote-name> --all new-project/0.0.1@<user>/<channel>
 ```
